@@ -1,36 +1,38 @@
 #include <iostream>
 using namespace std;
 
-bool isPrime(long long num) 
+bool next_dec(long long a)
 {
-    if (num <= 1) 
+    if(a<=1)
         return false;
-
-    if (num == 2 || num == 3) 
+    if(a==2 || a==3)
         return true;
-
-    if (num % 2 == 0 || num % 3 == 0)
+    if(a%2==0 || a%3==0)
         return false;
-
-    for (long long i = 5; i * i <= num; ++i) 
+    for(long long i=5;i*i<=a;++i)
     {
-        if (num % i == 0 || num % (i + 2) == 0) 
+        if (a % i == 0 || a % (i + 2) == 0) 
             return false;
     }
-
     return true;
 }
 
-int main() 
-{
-    long long N, n;
-    cin >> N;
-
-    for (int i = 0; i < N; ++i)
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    
+    long long t,num;
+    
+    cin >> t;
+    
+    for(int i=0;i<t;i++)
     {
-        std::cin >> n;
-        while (!isPrime(n))
-            n++;
-        cout << n << endl;
+        cin >> num;
+        while(!next_dec(num))
+            num++;
+        cout << num << "\n";
     }
+    
+    return 0;
 }
